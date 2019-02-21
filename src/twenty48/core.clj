@@ -25,10 +25,7 @@
 
 (def move-grid-right (partial map (comp (partial prepend 4) add split)))
 
-(defn move-grid-left
-  "Moves an entire grid to the left"
-  [grid]
-  grid)
+(def move-grid-left (partial map (comp (partial append 4) add split)))
 
 (defn move-grid-down
   "Moves an entire grid down"
