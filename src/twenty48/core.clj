@@ -1,10 +1,29 @@
 (ns twenty48.core
   (:gen-class))
 
-(defn move-grid-right
-  "Moves an entire grid to the right"
-  [grid]
-  grid)
+(def split-identical
+  (
+    comp (partial partition-by identity) (partial remove zero?)
+  )
+)
+
+(def split
+  (
+    comp (partial mapcat (partial partition-all 2)) split-identical
+  )
+)
+
+(def add (partial map (partial reduce +)))
+
+(defn append
+  [n coll]
+  (take n (concat coll (repeat n 0))))
+
+(defn prepend
+  [n coll]
+  (reverse (append n (reverse coll))))
+
+(def move-grid-right (partial map (comp (partial prepend 4) add split)))
 
 (defn move-grid-left
   "Moves an entire grid to the left"
@@ -20,3 +39,7 @@
   "Moves an entire grid up"
   [grid]
   grid)
+
+; ((partial map add) '((2 2) (2) (4) (2 2) (4 4)))
+; (partial apply (partial mapcat split)) `((0 0 2 2) (0 2 0 4) (2 0 2 0) (0 4 4 0)))
+; (move-grid-right `((0 0 2 2) (0 2 0 4) (2 0 2 0) (0 4 4 0)))
