@@ -39,7 +39,7 @@
 
 (def move-grid-left (partial map add-zeros-right-to-result))
 
-(def move-grid-right (partial map add-zeros-left-to-result)
+(def move-grid-right (partial map add-zeros-left-to-result))
 
 
 (defn move-grid-down
