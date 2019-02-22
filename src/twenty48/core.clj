@@ -45,12 +45,4 @@
 
 (def move-grid-down (comp cartesian (partial move-grid-right) cartesian))
 
-(defn move-grid-up
-  "Moves an entire grid up"
-  [grid]
-  grid)
-
-; ((partial map add) '((2 2) (2) (4) (2 2) (4 4)))
-; (partial apply (partial mapcat split)) `((0 0 2 2) (0 2 0 4) (2 0 2 0) (0 4 4 0)))
-; (move-grid-right `((0 0 2 2) (0 2 0 4) (2 0 2 0) (0 4 4 0)))
-; (move-grid-left `((0 0 2 2) (0 2 0 4) (2 0 2 0) (0 4 4 0)))
+(def move-grid-up (comp cartesian (partial move-grid-left) cartesian))
