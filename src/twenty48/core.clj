@@ -37,15 +37,13 @@
 
 (def add-zeros-left-to-result (comp prepend-four add-row-items))
 
+(def cartesian (partial apply map vector))
+
 (def move-grid-left (partial map add-zeros-right-to-result))
 
 (def move-grid-right (partial map add-zeros-left-to-result))
 
-
-(defn move-grid-down
-  "Moves an entire grid down"
-  [grid]
-  grid)
+(def move-grid-down (comp cartesian (partial move-grid-right) cartesian))
 
 (defn move-grid-up
   "Moves an entire grid up"
